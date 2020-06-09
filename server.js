@@ -3,9 +3,11 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const Message = require('./db/Message');
 
+app.use(cors());
 app.use(bodyParser.json()) // for parsing application/json
 
 // retrieve a list of all messages (output should be an array of objects)/api/messages
