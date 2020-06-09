@@ -1,12 +1,12 @@
 //Message Model
-// If you are using mongo/mongoose create your schema here
+const mongoose = require('mongoose');
 const db = require('./mongoconfig');
 const Schema = mongoose.Schema;
 
-const messageSchema = new Schema({
+const MessageSchema = new Schema({
   title: String,
   body: String
 })
 
 
-module.exports = Message;
+module.exports = mongoose.model('Message', MessageSchema);
