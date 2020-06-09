@@ -4,15 +4,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const db = require('./mongoconfig');
 
-const messageSchema = new Schema({
-    id: Number,
+const MessageSchema = new Schema({
+    // id: Number,
     name: String,
     message: String
 });
 
-let Message = mongoose.model('Message', messageSchema);
 
+// export model
+module.exports = mongoose.model('Message', MessageSchema);
 
-module.exports = Message;
+// module.exports = Message;
 
 
