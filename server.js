@@ -20,7 +20,7 @@ app.get('/api/messages', (req, res) => {
 })
 // create a message /api/messages
 app.post('/api/messages', function(req, res) {
-  // console.log(req.query)
+  console.log(req.query)
   let postMessage = Message(req.query)
   postMessage.save( err => {
     if(err) throw('Error with save on app.post ln18');
