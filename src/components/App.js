@@ -15,6 +15,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.getMessages = this.getMessages.bind(this);
     this.postMessage = this.postMessage.bind(this);
+    this.deleteMessage = this.deleteMessage.bind(this);
   }
 
   componentDidMount(){
@@ -46,6 +47,25 @@ class App extends React.Component {
         title: 'Title',
         body: this.state.value
       })
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({value: ''});
+      // console.log('Success: ', this.state.value);
+    })
+    .catch((err) => {
+      console.log('Error: ', err);
+    });
+  }
+
+  deleteMessage() {
+    fetch('http://127.0.0.1:3000/api/messages', {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      // body:JSON.stringify({
+      //   title: 'Title',
+      //   body: this.state.value
+      // })
     })
     .then(res => res.json())
     .then(data => {

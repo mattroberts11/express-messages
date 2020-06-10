@@ -1,11 +1,15 @@
 import React from 'react';
 
 const MessageList = (props) => {
-  // console.log(props);
+  // console.log('MessageList props =', props);
+
   return(
-    <div>
-    <h3>{props.message.title}</h3>
-    <p><strong>Message:</strong> {props.message.body}</p>
+    <div id={props.message._id}>
+      <h3>{props.message.title}</h3>
+      <p><strong>Message:</strong> {props.message.body}</p>
+      <form action='/api/messages/'>
+      <button>Delete Message</button>
+      </form>
     </div>
   )
 }
