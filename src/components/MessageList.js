@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MessageList = (props) => {
-  console.log(props);
+  // console.log(props);
   return(
     <div>
     <h3>{props.message.title}</h3>

@@ -9,19 +9,19 @@ const Message = require('./db/Message');
 
 app.use(cors());
 app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// retrieve a list of all messages (output should be an array of objects)/api/messages
+
 app.get('/api/messages', (req, res) => {
   let allMessages = Message.find((err, msg) => {
     if(err){console.log(err)};
     res.status(200).send(msg);
-    // console.log(msg);
   });
 })
 // create a message /api/messages
 app.post('/api/messages', function(req, res) {
-  console.log(req.query)
-  let postMessage = Message(req.query)
+  // console.log('POST =', req.body)
+  let postMessage = new Message(req.body)
   postMessage.save( err => {
     if(err) throw('Error with save on app.post ln18');
   })

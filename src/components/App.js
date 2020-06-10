@@ -42,11 +42,15 @@ class App extends React.Component {
     fetch('http://127.0.0.1:3000/api/messages', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify(data),
+      body:JSON.stringify({
+        title: 'Title',
+        body: this.state.value
+      })
     })
     .then(res => res.json())
     .then(data => {
-      console.log('Success: ', data);
+      this.setState({value: ''});
+      // console.log('Success: ', this.state.value);
     })
     .catch((err) => {
       console.log('Error: ', err);
@@ -61,13 +65,14 @@ class App extends React.Component {
 
         <form>
           <textarea
+            value={this.state.value}
             cols="50"
             rows="4"
-            value={this.state.value}
+            name="body"
             onChange={this.handleChange}>
           </textarea>
         </form>
-        <button>Post</button>
+        <button type="submit" onClick={this.postMessage}>Post</button>
         <Messages messages={this.state.messages}/>
       </div>
     );
